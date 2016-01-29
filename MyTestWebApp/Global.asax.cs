@@ -14,6 +14,7 @@ namespace MyTestWebApp
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            DependenciesConfig.RegisterDependencies();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

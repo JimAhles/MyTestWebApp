@@ -6,17 +6,28 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MyTestWebApp;
 using MyTestWebApp.Controllers;
+using MyFixIt.Logging;
+
 
 namespace MyTestWebApp.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
     {
+        private ILogger log;
+
+        
+        [TestInitialize()]
+        public void Initializexxx()
+        {
+            log = new LoggerNLog();
+        }
+
         [TestMethod]
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(log);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -29,7 +40,7 @@ namespace MyTestWebApp.Tests.Controllers
         public void About()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(log);
 
             // Act
             ViewResult result = controller.About() as ViewResult;
@@ -42,7 +53,7 @@ namespace MyTestWebApp.Tests.Controllers
         public void Contact()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(log);
 
             // Act
             ViewResult result = controller.Contact() as ViewResult;
